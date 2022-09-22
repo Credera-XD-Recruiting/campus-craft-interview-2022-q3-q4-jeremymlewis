@@ -41,6 +41,17 @@
   margin-bottom: 8px;
 }
 
+.post-date-published {
+  margin-top: 16px;
+  width: 100%;
+  margin-left: 24px;
+}
+
+.post-location {
+  width: 100%;
+  margin-left: 24px;
+}
+
 /* SKELETON LOADING */
 .post-content.skeleton-block {
   height: 125px;
