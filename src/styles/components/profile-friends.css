@@ -28,7 +28,7 @@
 }
 
 .profile-list-item .top-friend-flag {
-  display: none;
+  display: flex;
 }
 
 .profile-list-item .top-friend-flag + .page-paragraph {
