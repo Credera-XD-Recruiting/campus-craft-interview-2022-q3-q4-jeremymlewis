@@ -45,6 +45,13 @@
   min-width: 90px;
 }
 
+.profile-list-item-avatar h1 {
+  color: white;
+  margin-top: 20px;
+  font-family: "Lato", sans-serif;
+  font-size: 45px;
+}
+
 .profile-list-item-avatar img {
   height: 100%;
   width: 100%;
