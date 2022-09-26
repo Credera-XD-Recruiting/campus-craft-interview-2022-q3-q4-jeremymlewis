@@ -49,9 +49,40 @@ export const generateFriendsListFromTemplate = (resultsData) => {
   if (resultsData.friends && resultsData.friends.length > 0) {
     removeChildNodes(friendsListSection);
 
+    
+    //Results are split into two arrays to differentiate between precedence
+    let topFriends = [];
+    let regularFriends = [];
+
+    //Sorting Functions sort first by Top Friend, and secondly by last name
     for (let i = 0; i < resultsData.friends.length; i++) {
-      const friendsNode = generateListItemNode(resultsData.friends[i]);
+      if (resultsData.friends[i].topFriend) {
+        topFriends.push(resultsData.friends[i]);
+      } else {
+        regularFriends.push(resultsData.friends[i]);
+      }
+    }
+
+    topFriends.sort(function(friend1, friend2){
+      if(friend1.name.split(" ")[1] < friend2.name.split(" ")[1]) { return -1; }
+      if(friend1.name.split(" ")[1] > friend2.name.split(" ")[1]) { return 1; }
+      return 0;
+    })
+
+    regularFriends.sort(function(friend1, friend2){
+      if(friend1.name.split(" ")[1] < friend2.name.split(" ")[1]) { return -1; }
+      if(friend1.name.split(" ")[1] > friend2.name.split(" ")[1]) { return 1; }
+      return 0;
+    })
+
+    for (let i = 0; i < topFriends.length; i++) {
+      const friendsNode = generateListItemNode(topFriends[i]);
       friendsListSection.appendChild(friendsNode);
     }
+    for (let i = 0; i < regularFriends.length; i++) {
+      const friendsNode = generateListItemNode(regularFriends[i]);
+      friendsListSection.appendChild(friendsNode);
+    }
+
   }
 };
