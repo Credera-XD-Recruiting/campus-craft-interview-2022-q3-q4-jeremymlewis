@@ -20,11 +20,13 @@ const activityColors = {
  * @return {Node} generated markup for a card
  */
 const generateCardNode = (data) => {
-  const { name, href, image, activity } = data;
+  const { name, href, image, activity, favorite } = data;
+  console.log(data);
   const templateId = "profile-group-results-item-template";
   const resultCardTemplate = document.getElementById(templateId);
   const clone = document.importNode(resultCardTemplate.content, true);
   const titleNode = clone.querySelector("p.page-paragraph");
+  const favoriteNode = clone.querySelector("p.page-micro");
   const referenceNode = clone.querySelector("a.profile-group-results-card");
   const groupImageNode = clone.querySelector(
     "a.profile-group-results-card img"
@@ -33,6 +35,13 @@ const generateCardNode = (data) => {
   titleNode.innerHTML = `${name}`;
   referenceNode.href = href;
   groupImageNode.src = image;
+
+  if (favorite) {
+    favoriteNode.innerHTML = "Favorite";
+    const avatar = ".profile-group-avatar";
+    const avatarNode = clone.querySelector(avatar);
+    avatarNode.style.height = "174px"
+  }
 
   switch(activity) {
     case activityStates.active:
@@ -48,6 +57,8 @@ const generateCardNode = (data) => {
       referenceNode.style.background = activityColors.low;
       break;
   }
+
+
 
 
   return clone;
