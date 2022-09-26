@@ -30,6 +30,11 @@ const generateListItemNode = (data) => {
     avatarImg.src = avatarSrc;
     avatarImg.setAttribute("aria-label", `${name}`);
     avatarNode.appendChild(avatarImg);
+  } else {
+    let initials = name.charAt(0) + name.split(" ")[1].charAt(0);
+    const avatarImg = document.createElement("h1");
+    avatarImg.innerHTML = initials;
+    avatarNode.appendChild(avatarImg);
   }
 
   return clone;
