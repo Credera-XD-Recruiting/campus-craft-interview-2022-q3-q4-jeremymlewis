@@ -27,12 +27,27 @@ const generateCardNode = (data) => {
   const avatarNode = clone.querySelector(".post-author-avatar");
   const dateNode = clone.querySelector(".post-date-published");
   const locationNode = clone.querySelector(".post-location");
+  const expandButton = clone.querySelector(".expand-button");
 
   authorName.innerHTML = `${authorFirstName} ${authorLastName}`;
   jobDesc.innerHTML = `${jobTitle} @ ${companyName}`;
   postNode.innerHTML = post;
   dateNode.innerHTML = `Published on: ${publishDate}`;
   locationNode.innerHTML = `From: ${city}, ${state}`;
+  
+  expandButton.addEventListener("click", expandOrCondense);
+  let postIsExpanded = false;
+  function expandOrCondense() {
+    if (!postIsExpanded) {
+      document.getElementById("expanded").style.display = "block";
+      postIsExpanded = true;
+      expandButton.innerHTML = "See Less"
+    } else {
+      document.getElementById("expanded").style.display = "none";
+      postIsExpanded = false;
+      expandButton.innerHTML = "See More"
+    }
+  }
 
   if (authorAvatarSrc) {
     const avatarImg = document.createElement("img");

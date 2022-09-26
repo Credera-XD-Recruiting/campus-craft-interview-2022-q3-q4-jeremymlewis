@@ -20,6 +20,20 @@
   min-width: 75px;
 }
 
+#expanded {
+  display: none;
+}
+
+.expand-button {
+  border-radius: 3px;
+  margin: 0;
+  font-family: "Lato", sans-serif;
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  background-color: var(--grayscale_2);
+  color: var(--midnightBlack);
+}
+
 .post-author-avatar h1 {
   color: white;
   margin-top: 12px;
